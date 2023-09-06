@@ -1,11 +1,13 @@
 package Person;
 
 public class Customer extends Person {
-    private boolean mailingList;
-    private int customerNumber;
-    private static int customerNumberStatic = 0;
+    protected boolean mailingList;
+    protected int customerNumber;
+    protected static int customerNumberStatic = 0;
 
-    public Customer(){}
+    public Customer(){
+        this.customerNumber = customerNumberStatic++;
+    }
 
     public Customer(String name, String address, String phone, boolean mailingList){
         super(name, address, phone);
