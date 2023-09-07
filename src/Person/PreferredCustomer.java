@@ -6,19 +6,40 @@ public class PreferredCustomer extends Customer {
     Random rand = new Random();
     public static PreferredCustomer[] Customers = new PreferredCustomer[40];
     public static String[] names = {"Jean", "Marc", "Alba", "José", "Palaf", "Louis", "Paltea", "Nan", "Jhon", "Liibu", "OriginalName"};
+    public static String[] streets = { "Main Street", "Elm Street", "Maple Avenue", "Oak Drive", "Cedar Lane", "Pine Road", "Birch Boulevard", "Willow Lane", "Hickory Avenue", "Sycamore Drive"};
+    public static String[] streetTypes = {"Street", "Avenue", "Road", "Lane", "Drive", "Boulevard", "Place", "Circle", "Terrace", "Court"};
+    
     private int purchase = 0;
 
     public PreferredCustomer(){
         PreferredCustomer.Customers[getCustomerNumber()%PreferredCustomer.Customers.length] = this;
-        createCustomer(true);
+        Boolean mail = false;
+        if(rand.nextInt(2) == 1){
+            mail=true;
+        }
+        createCustomer(mail);
     }
 
     public void createCustomer(Boolean none){
         setName(names[rand.nextInt(names.length)]);
-        setAddress("address");
-        setPhone(String.valueOf(rand.nextInt(70000000)+1000000));
+        setAddress(rand.nextInt(30)+"th "+streetTypes[rand.nextInt(streetTypes.length)]+" "+streets[rand.nextInt(streets.length)]);
+        setPhone(generatePhoneNumber());
         setMailingList(none);
         Customers[getCustomerNumber()%PreferredCustomer.Customers.length] = this;
+    }
+
+    public static String generatePhoneNumber() {
+        Random random = new Random();
+
+        String areaCode = String.format("%03d", random.nextInt(1000));
+
+        String exchangeCode = String.format("%03d", random.nextInt(1000));
+
+        String subscriberNumber = String.format("%04d", random.nextInt(10000));
+
+        String formattedPhoneNumber = String.format("(%s) %s-%s", areaCode, exchangeCode, subscriberNumber);
+
+        return formattedPhoneNumber;
     }
 
     public PreferredCustomer(String name, String address, String phone, boolean mailingList){
@@ -30,13 +51,13 @@ public class PreferredCustomer extends Customer {
         int reduc = 0;
 
         if (purchase>2000){
-            reduc = 5;
-        }else if(purchase>1500){
-            reduc = 6;
-        }else if(purchase>1000){
-            reduc = 7;
-        }else if(purchase>500){
             reduc = 10;
+        }else if(purchase>1500){
+            reduc = 7;
+        }else if(purchase>1000){
+            reduc = 6;
+        }else if(purchase>500){
+            reduc = 5;
         }
 
         return reduc;
@@ -84,7 +105,7 @@ public class PreferredCustomer extends Customer {
         for (int i = 0; i < PreferredCustomer.Customers.length + rand.nextInt(30); i++) {
             PreferredCustomer cust = PreferredCustomer.Customers[rand.nextInt(Customer.customerNumberStatic)];
             if(cust!=null){
-                int value = rand.nextInt(6000);
+                int value = rand.nextInt(1000);
                 cust.getPurchasePrice(value);
                 System.out.println(cust.getName()+" bought $"+value+" worth of product, is reduction in price is now at: "+cust.getReduction());
             }

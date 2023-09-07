@@ -7,11 +7,12 @@ public class Main {
         int clientNumber = Integer.valueOf(JOptionPane.showInputDialog("Give number of client"));
         PreferredCustomer.Customers = new PreferredCustomer[clientNumber];
         for (int i = 0; i < PreferredCustomer.Customers.length; i++) {
-            PreferredCustomer customer = new PreferredCustomer();
+            new PreferredCustomer();
         }
-        PreferredCustomer.showCustomer();
+        //PreferredCustomer.showCustomer();
         PreferredCustomer.randomCustomerSpending();
-        PreferredCustomer.showCustomer();
+        //PreferredCustomer.showCustomer();
+        new CustomerGUI();
         
     }
 }
