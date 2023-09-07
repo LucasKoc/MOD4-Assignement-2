@@ -10,9 +10,47 @@ public class PayRoll {
     private static int idstatic = 0;
 
     public PayRoll(){
-        setName(JOptionPane.showInputDialog("Enter name"));
-        setPay(Integer.valueOf(JOptionPane.showInputDialog("Enter pay")));
-        setHoursWorked(Integer.valueOf(JOptionPane.showInputDialog("Enter hours worked")));
+        boolean valid;
+
+        do {
+            valid = false;
+            try{
+                setName(JOptionPane.showInputDialog("Enter name"));
+                valid = true;
+            }catch(StringIndexOutOfBoundsException i){
+                System.out.println("Please enter a name");
+            }catch(NullPointerException i){
+                System.out.println("Exiting");
+                return;
+            }
+        } while (!valid);
+
+        do {
+            valid = false;
+            try{
+                setPay(Integer.valueOf(JOptionPane.showInputDialog("Enter pay")));
+                valid = true;
+            }catch(InputMismatchException i){
+                System.out.println("Please input a value between 0 and 84");
+            }catch(NumberFormatException i){
+                System.out.println("Please input a number");
+            }
+        } while (!valid);
+
+        do {
+            valid = false;
+            try{
+                setHoursWorked(Integer.valueOf(JOptionPane.showInputDialog("Enter hours worked")));
+                valid = true;
+            }catch(InputMismatchException i){
+                System.out.println("Please input a value between 0 and 24");
+            }catch(NumberFormatException i){
+                System.out.println("Plesae input a number");
+            }
+        } while (!valid);
+        
+        
+        
         this.id = PayRoll.idstatic++;
     }
 
@@ -24,7 +62,7 @@ public class PayRoll {
     }
 
     public void setName(String name) throws StringIndexOutOfBoundsException{
-        if (name == ""){
+        if (name.isEmpty()){
             throw new StringIndexOutOfBoundsException();
         }
         this.name = name;
