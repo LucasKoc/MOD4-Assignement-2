@@ -2,9 +2,6 @@ package Person;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 
 public class CustomerGUI extends JFrame {
 

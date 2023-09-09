@@ -3,6 +3,7 @@ package Person;
 public class Customer extends Person {
     protected boolean mailingList;
     protected int customerNumber;
+    // To ensure every client has a unique customer number
     protected static int customerNumberStatic = 0;
 
     public Customer(){
