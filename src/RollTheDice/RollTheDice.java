@@ -31,12 +31,11 @@ public class RollTheDice extends JFrame {
         // Dice images
         diceImages = new ImageIcon[6];
         for (int i = 0; i < 6; i++) {
-            diceImages[i] = new ImageIcon("assets/png/dice" + (i + 1) + ".png");
+            diceImages[i] = new ImageIcon(getClass().getResource("assets/png/dice" + (i + 1) + ".png"));
         }
         System.out.println(Arrays.toString(diceImages));
 
-        diceLabel1 = new JLabel();
-        diceLabel2 = new JLabel();
+        diceLabel1 = new JLabel("I AM HERE");
         rollTheDiceButton = new JButton("Roll the Dice !");
 
         rollTheDiceButton.addActionListener(new ActionListener() {
@@ -48,25 +47,20 @@ public class RollTheDice extends JFrame {
 
         setLayout(new FlowLayout());
         add(diceLabel1);
-        add(diceLabel2);
         add(rollTheDiceButton);
+
+        pack();
 
         setVisible(true);
     }
 
     private void rollDice() {
         Random random = new Random();
-        int dice1Value = random.nextInt(6) + 1;
-        int dice2Value = random.nextInt(6) + 1;
+        int dice1Value = random.nextInt(6);
 
-        ImageIcon dice1Image = new ImageIcon("assets/png/dice" + dice1Value + ".png");
-        ImageIcon dice2Image = new ImageIcon("assets/png/dice" + dice2Value + ".png");
+        diceLabel1.setIcon(new ImageIcon(diceImages[dice1Value].getImage().getScaledInstance(128, 128, Image.SCALE_DEFAULT)));
+        diceLabel1.setText(null);
 
-        diceLabel1.setIcon(dice1Image);
-        diceLabel2.setIcon(dice2Image);
-        System.out.println(diceLabel1);
-        System.out.println(diceLabel2);
-        System.out.println(dice1Image);
-        System.out.println(dice2Image);
+        pack();
     }
 }
