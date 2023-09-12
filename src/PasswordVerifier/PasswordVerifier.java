@@ -46,14 +46,19 @@ public class PasswordVerifier {
 
     public boolean verifyCriteria() {
         boolean isSixLong = isSixLong(this.pwd), isLowerCase = this.isLowerCase(this.pwd), isUpperCase = this.isUpperCase(this.pwd), isDigit = this.isDigit(this.pwd);
-        System.out.println(isSixLong + " " + isLowerCase + " " + isUpperCase + " " + isDigit);
+        if (!(isSixLong && isLowerCase && isUpperCase && isDigit)) {
+            System.out.println("---------------------------------------------" +
+                    "\n/!\\ YOUR PASSWORD IS NOT ENOUGH STRONG /!\\" +
+                    "\nYou need to add : ");
+            if (!isDigit)
+                System.out.println("\t > A digit");
+            if (!isLowerCase)
+                System.out.println("\t > A lowercase letter");
+            if (!isUpperCase)
+                System.out.println("\t > An uppercase letter");
+            if (!isSixLong)
+                System.out.println("\t > More characters (need to be 6 characters long at least)");
+        }
         return isSixLong && isLowerCase && isUpperCase && isDigit;
-    }
-
-    @Override
-    public String toString() {
-        return "PasswordVerifier{" +
-                "str='" + this.pwd + '\'' +
-                '}';
     }
 }
