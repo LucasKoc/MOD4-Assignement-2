@@ -14,6 +14,7 @@ public class PayRoll {
     public PayRoll(){
         boolean valid;
 
+        //Multiple Loop to ensure safe input by the user by catching Exception
         do {
             valid = false;
             try{

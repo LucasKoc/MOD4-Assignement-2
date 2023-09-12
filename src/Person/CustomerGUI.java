@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class CustomerGUI extends JFrame {
-
-    private JButton button;
     
     public CustomerGUI(){
         createPanel();
@@ -17,17 +15,16 @@ public class CustomerGUI extends JFrame {
         setSize(200, 800);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
 
         panel2.add(new JLabel("Customers"));
+        // We ensure to create a panel for each customer in our list with their own independend value for modification by actionlistener
         for (PreferredCustomer cust : PreferredCustomer.Customers) {
             JPanel panel = new JPanel();
             JButton button2;
             JLabel spend, reduc;
-            //panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
             panel.add(new JLabel("ID: "+cust.getCustomerNumber()));
             panel.add(new JLabel("Name: "+cust.getName()));
             panel.add(new JLabel("Address: "+cust.getAddress()));
@@ -44,6 +41,7 @@ public class CustomerGUI extends JFrame {
                     reduc.setText("Reduction: "+cust.getReduction());
                 }
             });
+            // We add our panel to the global panel
             panel2.add(panel);
 
         }
