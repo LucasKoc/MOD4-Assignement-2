@@ -12,6 +12,7 @@ package RollTheDice;
 
 public class Main {
     public static void main(String[] args) {
+        // Instantiate from RollTheDice class to generate a window with the dice roller.
         new RollTheDice();
     }
 }
