@@ -6,25 +6,25 @@ public class Customer extends Person {
     // To ensure every client has a unique customer number
     protected static int customerNumberStatic = 0;
 
-    public Customer(){
+    public Customer() {
         this.customerNumber = customerNumberStatic++;
     }
 
-    public Customer(String name, String address, String phone, boolean mailingList){
+    public Customer(String name, String address, String phone, boolean mailingList) {
         super(name, address, phone);
         this.mailingList = mailingList;
         this.customerNumber = customerNumberStatic++;
     }
 
-    public int getCustomerNumber(){
+    public int getCustomerNumber() {
         return this.customerNumber;
     }
 
-    public void setMailingList(boolean mailingList){
+    public void setMailingList(boolean mailingList) {
         this.mailingList = mailingList;
     }
 
-    public boolean getMailingList(){
+    public boolean getMailingList() {
         return this.mailingList;
     }
 }

@@ -47,8 +47,8 @@ public class RollTheDice extends JFrame {
         }
 
         // Settings of labels & buttons
-        diceLabel1 = new JLabel("Please roll", SwingConstants.CENTER);
-        diceLabel2 = new JLabel("the dice", SwingConstants.CENTER);
+        diceLabel1 = new JLabel("Please roll", SwingConstants.RIGHT);
+        diceLabel2 = new JLabel("the dice", SwingConstants.LEFT);
         diceLabel1.setPreferredSize(new Dimension(128, 128));
         diceLabel2.setPreferredSize(new Dimension(128, 128));
         rollTheDiceButton = new JButton("Roll the Dice !");
@@ -73,7 +73,7 @@ public class RollTheDice extends JFrame {
      * Function rollDice
      * Will instantiate a variable from Random class
      * Store a random number between 1 to 6
-     * Set the Image to the diceLabel1 (and remove its text)
+     * Set the Image to the diceLabel1/diceLabel2 (and remove its text)
      * And resize the window to match the label size (by default, no needed because WINDOW_WIDTH/WINDOW_HEIGHT)
      *  already at the good size.
      */

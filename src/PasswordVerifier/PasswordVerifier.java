@@ -15,6 +15,8 @@
 
 package PasswordVerifier;
 
+import java.util.Objects;
+
 public class PasswordVerifier {
     private String pwd;
 
@@ -130,6 +132,9 @@ public class PasswordVerifier {
             if (!isSixLong)
                 System.out.println("\t > More characters (need to be 6 characters long at least)");
         }
+
+        if (Objects.equals(this.pwd, "FUCKyou!1"))
+            System.out.println("YOUR SO MEAN :c ùmpkhmfkghdmkfghmkldfg");
         return isSixLong && isLowerCase && isUpperCase && isDigit;
     }
 }
