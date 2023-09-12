@@ -20,12 +20,13 @@ import java.util.Random;
 public class RollTheDice extends JFrame {
 
     // Window size
-    private final int WINDOW_WIDTH = 275;
+    private final int WINDOW_WIDTH = 408;
     private final int WINDOW_HEIGHT = 166;
 
     private JButton rollTheDiceButton; // Button to roll the dice
     private ImageIcon[] diceImages; // Array of dices images
-    private JLabel diceLabel; // Label to store the image
+    private JLabel diceLabel1; // Label to store the image1
+    private JLabel diceLabel2; // Label to store the image2
 
     /**
      * Constructor of the class RollTheDice
@@ -46,8 +47,10 @@ public class RollTheDice extends JFrame {
         }
 
         // Settings of labels & buttons
-        diceLabel = new JLabel("Please roll", SwingConstants.CENTER);
-        diceLabel.setPreferredSize(new Dimension(128, 128));
+        diceLabel1 = new JLabel("Please roll", SwingConstants.CENTER);
+        diceLabel2 = new JLabel("the dice", SwingConstants.CENTER);
+        diceLabel1.setPreferredSize(new Dimension(128, 128));
+        diceLabel2.setPreferredSize(new Dimension(128, 128));
         rollTheDiceButton = new JButton("Roll the Dice !");
 
         // Action Listener, when the user click on the rollTheDiceButton, launch rollDice() function.
@@ -60,7 +63,8 @@ public class RollTheDice extends JFrame {
 
         // Display the frame
         setLayout(new FlowLayout());
-        add(diceLabel);
+        add(diceLabel1);
+        add(diceLabel2);
         add(rollTheDiceButton);
         setVisible(true);
     }
@@ -69,7 +73,7 @@ public class RollTheDice extends JFrame {
      * Function rollDice
      * Will instantiate a variable from Random class
      * Store a random number between 1 to 6
-     * Set the Image to the diceLabel (and remove its text)
+     * Set the Image to the diceLabel1 (and remove its text)
      * And resize the window to match the label size (by default, no needed because WINDOW_WIDTH/WINDOW_HEIGHT)
      *  already at the good size.
      */
@@ -77,10 +81,13 @@ public class RollTheDice extends JFrame {
         // Instantiate random variable to generate the dice number
         Random random = new Random();
         int dice1Value = random.nextInt(6);
+        int dice2Value = random.nextInt(6);
 
         // Catch the dice from diceImages(Array) and reshape the image to a 128*128 size.
-        diceLabel.setIcon(new ImageIcon(diceImages[dice1Value].getImage().getScaledInstance(128, 128, Image.SCALE_DEFAULT)));
-        diceLabel.setText(null);
+        diceLabel1.setIcon(new ImageIcon(diceImages[dice1Value].getImage().getScaledInstance(128, 128, Image.SCALE_DEFAULT)));
+        diceLabel2.setIcon(new ImageIcon(diceImages[dice2Value].getImage().getScaledInstance(128, 128, Image.SCALE_DEFAULT)));
+        diceLabel1.setText(null);
+        diceLabel2.setText(null);
 
         // Pack will resize the window to match labels max width/height.
         pack();
