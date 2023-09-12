@@ -9,33 +9,31 @@ package RollTheDice;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
 import java.util.Random;
 
 public class RollTheDice extends JFrame {
-    private final int WINDOW_WIDTH = 720;
-    private final int WINDOW_HEIGHT = 480;
+    private final int WINDOW_WIDTH = 275;
+    private final int WINDOW_HEIGHT = 166;
 
     private JButton rollTheDiceButton;
     private ImageIcon[] diceImages;
     private JLabel diceLabel1;
-    private JLabel diceLabel2;
 
     public RollTheDice() {
         // Frame Parameters
         setTitle("Roll the dice !");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLocation(0,0);
+        setLocationRelativeTo(null);
 
         // Dice images
         diceImages = new ImageIcon[6];
         for (int i = 0; i < 6; i++) {
             diceImages[i] = new ImageIcon(getClass().getResource("assets/png/dice" + (i + 1) + ".png"));
         }
-        System.out.println(Arrays.toString(diceImages));
 
-        diceLabel1 = new JLabel("I AM HERE");
+        diceLabel1 = new JLabel("Please roll", SwingConstants.CENTER);
+        diceLabel1.setPreferredSize(new Dimension(128, 128));
         rollTheDiceButton = new JButton("Roll the Dice !");
 
         rollTheDiceButton.addActionListener(new ActionListener() {
@@ -48,8 +46,6 @@ public class RollTheDice extends JFrame {
         setLayout(new FlowLayout());
         add(diceLabel1);
         add(rollTheDiceButton);
-
-        pack();
 
         setVisible(true);
     }
