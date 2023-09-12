@@ -3,8 +3,7 @@
  * Generate a frame which will store an image of the dice and a button to roll the dice (1 to 6).
  *
  * Credits assets :
- * - Dices image : Mike Zuidgeest on Flaticon (https://www.flaticon.com/authors/mike-zuidgeest)
- * - Dice icon : smashingstocks on Flaticon (https://www.flaticon.com/authors/smashingstocks)
+ * - Dice images : Mike Zuidgeest on Flaticon (https://www.flaticon.com/authors/mike-zuidgeest)
  *
  * @author SOLAN Tao & KOCOGLU Lucas
  * @version N/A
