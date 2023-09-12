@@ -14,8 +14,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Scanner instance to scan input
         Scanner myScan = new Scanner(System.in);
+
+        // Password instance for verification and password storage
         PasswordVerifier pwd = new PasswordVerifier();
+
+        // Indications to the user
         System.out.println("------------Example.com password--------------" +
                 "\nPlease enter a strong password." +
                 "\nStrong password is defined by :" +
@@ -23,10 +28,12 @@ public class Main {
                 "\n\t> Contain at least one uppercase letter" +
                 "\n\t> Contain at least one lowercase letter" +
                 "\n\t> Contain at least on digit.");
+
+        // do while with cond : password does not meet Criteria
         do {
             System.out.print("---------------------------------------------" +
                     "\nYour password : ");
-            pwd.setStr(myScan.nextLine());
+            pwd.setPwd(myScan.nextLine());
         } while(!pwd.verifyCriteria());
 
         System.out.println("---------------------------------------------" +
